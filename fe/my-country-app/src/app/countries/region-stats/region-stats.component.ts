@@ -1,4 +1,3 @@
-
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule, } from '@angular/material/sort';
@@ -20,7 +19,7 @@ import { RegionDTO, RegionService } from '../../services/region.service';
   selector: 'app-region-stats',
   imports: [CommonModule, ReactiveFormsModule, ReactiveFormsModule,
     MatFormFieldModule, MatInputModule, MatSelectModule,
-    MatProgressSpinnerModule, MatTableModule, MatPaginatorModule],
+    MatProgressSpinnerModule, MatTableModule, MatPaginatorModule, MatSortModule],
   templateUrl: './region-stats.component.html',
   styleUrl: './region-stats.component.css'
 })
@@ -29,7 +28,7 @@ export class RegionStatsComponent implements AfterViewInit{
 
   regions: RegionDTO[] = [];
   data: CountryStatsJoinViewDTO[] = [];
-  displayedColumns: string[] = ['continentName', 'regionName', 'countryName', 'year', 'population', 'gdp'];
+  displayedColumns: string[] = ['continent_name', 'region_name', 'country_name', 'year', 'population', 'gdp'];
   regionId: string = '1';
   dateFrom: string = '1';
   dateTo: string = '1';
@@ -56,7 +55,7 @@ export class RegionStatsComponent implements AfterViewInit{
       this.dateFrom = this.form.value.inputOne;
       this.dateTo = this.form.value.inputTwo;
       this.paginator.pageIndex = 0;
-      this.ngAfterViewInit();
+      this.fetchData();
 
     } else {
       console.log('Form invalid');

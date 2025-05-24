@@ -29,10 +29,9 @@ public interface CountryStatsJoinViewMapper {
             @Param("regionId") Integer regionId,
             @Param("dateFrom") Integer dateFrom,
             @Param("dateTo") Integer dateTo,
-            @Param("limit") int limit,
+            @Param("pageSize") int pageSize,
             @Param("offset") int offset,
-            @Param("sort") String sort
-    );
+            @Param("sort") String sort);
 
     @Select("SELECT COUNT(*) " +
             "FROM country_stats s " +
