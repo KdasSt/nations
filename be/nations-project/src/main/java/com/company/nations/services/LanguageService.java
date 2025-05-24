@@ -13,7 +13,6 @@ public class LanguageService {
     private SpokenLanguageMapper spokenLanguageMapper;
 
     public List<SpokenLanguageDTO> findSpokenLanguages(int id) {
-        String test = "hi";
         return spokenLanguageMapper.findSpokenLanguages(id);
     }
 }
