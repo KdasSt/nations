@@ -1,0 +1,9 @@
+<h2>Spoken languages in Country : {{ country.name }} </h2>
+
+
+
+<mat-list>
+  @for (spokenLanguage of spokenLanguages; track $index) {
+    <mat-list-item>{{spokenLanguage.language}}</mat-list-item>
+  }
+</mat-list>

@@ -1,0 +1,47 @@
+<div class="mat-elevation-z8">
+    @if (isLoadingResults) {
+    <div >
+        <mat-spinner></mat-spinner>
+    </div>
+    }
+
+    <div class="countries-stats-table-container">
+
+        <h2>The record shown for each country is the maximum gdp per population ratio along the years</h2>
+
+        <table mat-table [dataSource]="data" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="country_code3">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                    Country Code
+                </th>
+                <td mat-cell *matCellDef="let row">{{row.countryCode3}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="year">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>Year</th>
+                <td mat-cell *matCellDef="let row">{{row.year}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="population">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>Population</th>
+                <td mat-cell *matCellDef="let row">{{row.population}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="gdp">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef>GDP</th>
+                <td mat-cell *matCellDef="let row">{{row.gdp}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25]" aria-label="Select page"></mat-paginator>
+</div>
